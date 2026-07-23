@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Google Translator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌍 Google Translator</h1>
+
+<form method="POST">
+
+<textarea
+name="text"
+rows="6"
+placeholder="Enter text here..."
+required></textarea>
+
+<div class="row">
+
+<div>
+
+<label>From</label>
+
+<select name="source">
+
+{% for name, code in languages.items() %}
+
+<option value="{{code}}">
+{{name}}
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div>
+
+<label>To</label>
+
+<select name="target">
+
+{% for name, code in languages.items() %}
+
+<option value="{{code}}">
+{{name}}
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+</div>
+
+<button type="submit">
+Translate
+</button>
+
+</form>
+
+{% if translated %}
+
+<h2>Translated Text</h2>
+
+<div class="output">
+{{ translated }}
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
